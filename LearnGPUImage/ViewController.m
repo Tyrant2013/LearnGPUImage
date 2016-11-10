@@ -14,7 +14,6 @@
 >
 
 @property (nonatomic, weak) UIImageView                     *mixImageView;
-@property (nonatomic, strong) UIImage                       *mixImage;
 @property (nonatomic, assign) CGFloat                       originHeight;
 
 @end
@@ -61,7 +60,6 @@
     gaussianFilter.blurRadiusInPixels = 5.0f;
     UIImage *gaussianImage = [gaussianFilter imageByFilteringImage:image];
     mixImageView.image = gaussianImage;
-    self.mixImage = gaussianImage;
     CGFloat unintY = posY / screenHeight;
     CGFloat unintH = (screenHeight - startPos) / screenHeight;
     mixImageView.backgroundColor = [UIColor blueColor];
@@ -88,7 +86,6 @@
     CGRect rect = self.mixImageView.layer.contentsRect;
     rect.size.height = unitH;
     rect.origin.y = (CGRectGetHeight([UIScreen mainScreen].bounds) - height) / CGRectGetHeight([UIScreen mainScreen].bounds);
-    self.mixImageView.image = self.mixImage;
     self.mixImageView.layer.contentsRect = rect;
     self.mixImageView.frame = frame;
 }
